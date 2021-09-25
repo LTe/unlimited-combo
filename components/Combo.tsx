@@ -13,17 +13,9 @@ const Movie = (props: { movie: ExtendedEvent }) => {
         </div>
       </div>
       <div className="flex flex-col justify-center">
-        <div className="w-32 h-32">
+        <div className="mx-auto w-auto">
           <a href={movie.film.link}>
-            <Image
-              alt=""
-              title=""
-              width="100%"
-              height="100%"
-              layout="responsive"
-              objectFit="contain"
-              src={movie.film.posterLink}
-            />
+            <img alt="" title="" src={movie.film.posterLink} />
           </a>
         </div>
         <div className="text-center">{movie.film.length} min</div>
