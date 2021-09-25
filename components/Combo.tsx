@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { ExtendedEvent } from '@utils/cinema-city';
 import { format, differenceInMinutes, formatISO } from 'date-fns';
 

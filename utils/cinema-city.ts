@@ -10,7 +10,7 @@ import {
 export const COMMERCIAL_BREAK = 30;
 export const MAXIMUM_BREAK = 60;
 
-type CinemaCityFilm = {
+export type CinemaCityFilm = {
   id: string;
   name: string;
   length: number;
@@ -22,7 +22,7 @@ type CinemaCityFilm = {
   attributeIds: string[];
 };
 
-type CinemaCityEvent = {
+export type CinemaCityEvent = {
   id: string;
   filmId: string;
   cinemaId: string;
@@ -35,7 +35,7 @@ type CinemaCityEvent = {
   auditoriumTinyName: string;
 };
 
-type CinemaCityResponse = {
+export type CinemaCityResponse = {
   body: {
     films: CinemaCityFilm[];
     events: CinemaCityEvent[];
