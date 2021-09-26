@@ -40,24 +40,25 @@ const Movie = (props: { movie: ExtendedEvent }) => {
 };
 
 export const Combo = (props: {
-  firstFilm: ExtendedEvent;
-  secondFilm: ExtendedEvent;
+  firstMovie: ExtendedEvent;
+  secondMovie: ExtendedEvent;
 }) => {
-  const { firstFilm, secondFilm } = props;
+  const { firstMovie, secondMovie } = props;
+  const difference = differenceInMinutes(
+    secondMovie.startAt,
+    firstMovie.endAtWithCommercial
+  );
+
   return (
     <div className="flex gap-5 items-center bg-gray-50 p-5 rounded shadow-xl flex-col md:flex-row w-auto justify-center">
-      <Movie movie={firstFilm} />
+      <Movie movie={firstMovie} />
       <div className="flex flex-col">
         <div className="text-center">Przerwa</div>
         <div className="bg-yellow-300 p-3 rounded shadow-md text-center">
-          {differenceInMinutes(
-            secondFilm.startAt,
-            firstFilm.endAtWithCommercial
-          )}{' '}
-          min
+          {difference} min
         </div>
       </div>
-      <Movie movie={secondFilm} />
+      <Movie movie={secondMovie} />
     </div>
   );
 };

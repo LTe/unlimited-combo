@@ -54,6 +54,47 @@ export type ComboEvent = {
   candidates: ExtendedEvent[];
 };
 
+export type FilmPair = {
+  firstMovie: ExtendedEvent;
+  secondMovie: ExtendedEvent;
+};
+
+export const cinamas = [
+  { id: '1088', name: 'Bielsko-Biała' },
+  { id: '1086', name: 'Bydgoszcz' },
+  { id: '1092', name: 'Bytom' },
+  { id: '1089', name: 'Częstochowa - Galeria Jurajska' },
+  { id: '1075', name: 'Częstochowa - Wolność' },
+  { id: '1085', name: 'Gliwice' },
+  { id: '1065', name: 'Katowice - Punkt 44' },
+  { id: '1079', name: 'Katowice - Silesia' },
+  { id: '1090', name: 'Kraków - Bonarka' },
+  { id: '1076', name: 'Kraków - Galeria Kazimierz' },
+  { id: '1064', name: 'Kraków - Zakopianka' },
+  { id: '1094', name: 'Lublin - Felicity' },
+  { id: '1084', name: 'Lublin - Plaza' },
+  { id: '1080', name: 'Łódź Manufaktura' },
+  { id: '1081', name: 'Poznań - Kinepolis' },
+  { id: '1078', name: 'Poznań - Plaza' },
+  { id: '1062', name: 'Ruda Śląska' },
+  { id: '1082', name: 'Rybnik' },
+  { id: '1083', name: 'Sosnowiec' },
+  { id: '1095', name: 'Starogard Gdański' },
+  { id: '1077', name: 'Toruń - Czerwona Droga' },
+  { id: '1093', name: 'Toruń - Plaza' },
+  { id: '1091', name: 'Wałbrzych' },
+  { id: '1074', name: 'Warszawa -  Arkadia' },
+  { id: '1061', name: 'Warszawa - Bemowo' },
+  { id: '1096', name: 'Warszawa - Białołęka Galeria Północna' },
+  { id: '1070', name: 'Warszawa - Galeria Mokotów' },
+  { id: '1069', name: 'Warszawa - Janki' },
+  { id: '1068', name: 'Warszawa - Promenada' },
+  { id: '1060', name: 'Warszawa - Sadyba' },
+  { id: '1067', name: 'Wrocław - Korona' },
+  { id: '1097', name: 'Wrocław - Wroclavia' },
+  { id: '1087', name: 'Zielona Góra' },
+];
+
 export const apiURL = (cinemaId: string, date: Date) => {
   const formattedDate = format(date, 'yyyy-MM-dd');
   return `https://www.cinema-city.pl/pl/data-api-service/v1/quickbook/10103/film-events/in-cinema/${cinemaId}/at-date/${formattedDate}`;
@@ -71,7 +112,7 @@ export const generateCombos = (
   data: CinemaCityResponse,
   maximumBreak: number = MAXIMUM_BREAK,
   commercial_break: number = COMMERCIAL_BREAK
-): ComboEvent[] => {
+): FilmPair[] => {
   const {
     body: { films, events },
   } = data;
@@ -86,10 +127,15 @@ export const generateCombos = (
     return { ...event, startAt, endAt, endAtWithCommercial, film };
   });
 
-  return extendedEvents.map((event) => {
-    const candidates = findCandidates(event, extendedEvents, maximumBreak);
-    return { event: event, candidates: candidates };
-  });
+  return extendedEvents
+    .map((event) => {
+      const candidates = findCandidates(event, extendedEvents, maximumBreak);
+      return candidates.map((candidate) => ({
+        firstMovie: event,
+        secondMovie: candidate,
+      }));
+    })
+    .flat();
 };
 
 const findCandidates = (
