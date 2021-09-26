@@ -1,14 +1,21 @@
 import { ExtendedEvent } from '@utils/cinema-city';
-import { format, differenceInMinutes, formatISO } from 'date-fns';
+import { format, differenceInMinutes } from 'date-fns';
+import { Md5 } from 'ts-md5/dist/md5';
+import { LinkIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
 
 const Movie = (props: { movie: ExtendedEvent }) => {
   const { movie } = props;
   return (
     <div className="flex items-center gap-2">
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-2">
         <div className="text-center">Start</div>
-        <div className="bg-green-300 p-3 rounded shadow-md">
+        <div className="bg-green-300 p-3 rounded shadow-md text-center">
           {format(movie.startAt, 'HH:mm')}
+        </div>
+        <div className="text-center text-blue-600">Real Start™</div>
+        <div className="bg-green-300 p-3 rounded shadow-md text-center">
+          {format(movie.startAtWithCommercial, 'HH:mm')}
         </div>
       </div>
       <div className="flex flex-col justify-center">
@@ -48,9 +55,18 @@ export const Combo = (props: {
     secondMovie.startAt,
     firstMovie.endAtWithCommercial
   );
+  const id = Md5.hashAsciiStr(JSON.stringify([firstMovie, secondMovie]));
 
   return (
-    <div className="flex gap-5 items-center bg-gray-50 p-5 rounded shadow-xl flex-col md:flex-row w-auto justify-center">
+    <div
+      id={id}
+      className="relative flex gap-5 items-center bg-gray-50 p-5 rounded shadow-xl flex-col md:flex-row w-auto justify-center"
+    >
+      <div className="top-5 right-5 absolute">
+        <Link href={`#${id}`}>
+          <LinkIcon className="h-5 w-5 text-blue-500" />
+        </Link>
+      </div>
       <Movie movie={firstMovie} />
       <div className="flex flex-col">
         <div className="text-center">Przerwa</div>

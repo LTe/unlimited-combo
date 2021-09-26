@@ -46,6 +46,7 @@ export type ExtendedEvent = CinemaCityEvent & {
   startAt: Date;
   endAt: Date;
   endAtWithCommercial: Date;
+  startAtWithCommercial: Date;
   film: CinemaCityFilm;
 };
 
@@ -123,8 +124,16 @@ export const generateCombos = (
     const movieLength = film.length;
     const endAt = add(startAt, { minutes: movieLength });
     const endAtWithCommercial = add(endAt, { minutes: commercial_break });
+    const startAtWithCommercial = add(startAt, { minutes: commercial_break });
 
-    return { ...event, startAt, endAt, endAtWithCommercial, film };
+    return {
+      ...event,
+      startAt,
+      endAt,
+      endAtWithCommercial,
+      startAtWithCommercial,
+      film,
+    };
   });
 
   return extendedEvents

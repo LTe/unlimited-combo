@@ -11,16 +11,27 @@ import 'react-json-pretty/themes/monikai.css';
 import { ChangeEventHandler, useState } from 'react';
 import { NextPageContext } from 'next/dist/shared/lib/utils';
 import { parseISO } from 'date-fns';
+import { useRouter } from 'next/router';
 
 const MAXIMUM_BREAK = 60;
 
 const Home: NextPage<{ data: CinemaCityResponse; cinema: string }> = (
   props
 ) => {
-  const [moviesToShow, setMoviesToShow] = useState<string[]>([]);
-  const [maximumBreak, setMaximumBreak] = useState<number>(MAXIMUM_BREAK);
-  const [commercialBreak, setCommercialBreak] =
-    useState<number>(COMMERCIAL_BREAK);
+  const router = useRouter();
+  const [moviesToShow, setMoviesToShow] = useState<string[]>(
+    (router.query.movies as string[]) || []
+  );
+  const breakFromParams =
+    router.query.break && parseInt(router.query.break as string);
+  const [maximumBreak, setMaximumBreak] = useState<number>(
+    breakFromParams || MAXIMUM_BREAK
+  );
+  const commercialBreakFromParams =
+    router.query.commercial && parseInt(router.query.commercial as string);
+  const [commercialBreak, setCommercialBreak] = useState<number>(
+    commercialBreakFromParams || COMMERCIAL_BREAK
+  );
 
   const { data, cinema } = props;
   const combos = generateCombos(data, maximumBreak, commercialBreak);
@@ -49,10 +60,18 @@ const Home: NextPage<{ data: CinemaCityResponse; cinema: string }> = (
     const value = event.target.value;
 
     if (moviesToShow.includes(value)) {
-      setMoviesToShow(moviesToShow.filter((item) => item !== value));
+      const movies = moviesToShow.filter((item) => item !== value);
+      setMovies(movies);
     } else {
-      setMoviesToShow([...moviesToShow, value]);
+      const movies = [...moviesToShow, value];
+      setMovies(movies);
     }
+  };
+
+  const setMovies = (moviesToSet: string[]) => {
+    setMoviesToShow(moviesToSet);
+    router.query.movies = moviesToSet;
+    router.push(router, undefined, { shallow: true });
   };
 
   const renderCheckboxes = () => {
@@ -91,9 +110,11 @@ const Home: NextPage<{ data: CinemaCityResponse; cinema: string }> = (
               className="inline w-20 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="number"
               value={maximumBreak}
-              onChange={({ target: { value } }) =>
-                setMaximumBreak(parseInt(value))
-              }
+              onChange={({ target: { value } }) => {
+                setMaximumBreak(parseInt(value));
+                router.query.break = value;
+                router.push(router, undefined, { shallow: true });
+              }}
             />
             <span className="p-1">minut</span>
           </li>
@@ -103,9 +124,11 @@ const Home: NextPage<{ data: CinemaCityResponse; cinema: string }> = (
               className="inline w-20 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="number"
               value={commercialBreak}
-              onChange={({ target: { value } }) =>
-                setCommercialBreak(parseInt(value))
-              }
+              onChange={({ target: { value } }) => {
+                setCommercialBreak(parseInt(value));
+                router.query.commercial = value;
+                router.push(router, undefined, { shallow: true });
+              }}
             />
             <span className="p-1">minut</span>
           </li>

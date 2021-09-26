@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.4",
     "@tailwindcss/forms": "^0.3.3",
     "babel-plugin-superjson-next": "^0.4.1",
     "date-fns": "^2.24.0",
@@ -18,7 +19,8 @@
     "react-dom": "17.0.2",
     "react-json-pretty": "^2.2.0",
     "sharp": "^0.29.1",
-    "superjson": "^1.7.5"
+    "superjson": "^1.7.5",
+    "ts-md5": "^1.2.9"
   },
   "devDependencies": {
     "@types/react": "17.0.24",
