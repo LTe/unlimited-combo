@@ -63,9 +63,9 @@ export const Combo = (props: {
       className="relative flex gap-5 items-center bg-gray-50 p-5 rounded shadow-xl flex-col md:flex-row w-auto justify-center"
     >
       <div className="top-5 right-5 absolute">
-        <Link href={`#${id}`}>
+        <a href={`#${id}`}>
           <LinkIcon className="h-5 w-5 text-blue-500" />
-        </Link>
+        </a>
       </div>
       <Movie movie={firstMovie} />
       <div className="flex flex-col">
