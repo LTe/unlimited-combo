@@ -2,7 +2,6 @@ import { ExtendedEvent } from '@utils/cinema-city';
 import { format, differenceInMinutes } from 'date-fns';
 import { Md5 } from 'ts-md5/dist/md5';
 import { LinkIcon } from '@heroicons/react/solid';
-import Link from 'next/link';
 
 const Movie = (props: { movie: ExtendedEvent }) => {
   const { movie } = props;
@@ -52,7 +51,7 @@ export const Combo = (props: {
 }) => {
   const { firstMovie, secondMovie } = props;
   const difference = differenceInMinutes(
-    secondMovie.startAt,
+    secondMovie.startAtWithCommercial,
     firstMovie.endAtWithCommercial
   );
   const id = Md5.hashAsciiStr(JSON.stringify([firstMovie, secondMovie]));

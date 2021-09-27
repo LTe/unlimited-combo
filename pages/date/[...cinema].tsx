@@ -19,9 +19,12 @@ const Home: NextPage<{ data: CinemaCityResponse; cinema: string }> = (
   props
 ) => {
   const router = useRouter();
+  const moviesFromParams =
+    router.query.movies && JSON.parse(router.query.movies as string);
   const [moviesToShow, setMoviesToShow] = useState<string[]>(
-    (router.query.movies as string[]) || []
+    moviesFromParams || []
   );
+
   const breakFromParams =
     router.query.break && parseInt(router.query.break as string);
   const [maximumBreak, setMaximumBreak] = useState<number>(
@@ -70,7 +73,7 @@ const Home: NextPage<{ data: CinemaCityResponse; cinema: string }> = (
 
   const setMovies = (moviesToSet: string[]) => {
     setMoviesToShow(moviesToSet);
-    router.query.movies = moviesToSet;
+    router.query.movies = JSON.stringify(moviesToSet);
     router.push(router, undefined, { shallow: true });
   };
 

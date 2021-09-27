@@ -156,11 +156,14 @@ const findCandidates = (
 
   return candidates
     .filter(
-      (candidate) => compareAsc(candidate.startAt, endAtWithCommercial) === 1
+      (candidate) =>
+        compareAsc(candidate.startAtWithCommercial, endAtWithCommercial) === 1
     )
     .filter(
       (candidate) =>
-        differenceInMinutes(candidate.startAt, event.endAtWithCommercial) <=
-        maximumBreak
+        differenceInMinutes(
+          candidate.startAtWithCommercial,
+          event.endAtWithCommercial
+        ) <= maximumBreak
     );
 };
