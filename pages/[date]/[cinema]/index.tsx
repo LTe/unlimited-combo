@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import { GetServerSideProps, InferGetStaticPropsType } from 'next';
 import {
   cinamas,
   CinemaCityResponse,
@@ -17,7 +17,7 @@ const MAXIMUM_BREAK = 60;
 type Props = { data: CinemaCityResponse; cinema: string };
 type Params = { date: string; cinema: string };
 
-const Home = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home = (props: Props) => {
   const router = useRouter();
   const moviesFromParams =
     router.query.movies && JSON.parse(router.query.movies as string);
@@ -150,14 +150,7 @@ const Home = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: 'blocking',
-  };
-};
-
-export const getStaticProps: GetStaticProps<Props, Params> = async (
+export const getServerSideProps: GetServerSideProps<Props, Params> = async (
   context
 ) => {
   const { date, cinema } = context.params!;
