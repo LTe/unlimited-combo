@@ -104,7 +104,10 @@ const Home = (props: Props) => {
   };
   return (
     <>
-      <h2 className="font-extrabold">Możliwe combosy</h2>
+      <h2 className="font-extrabold">Wybierz przynajmniej 2 filmy</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
+        {renderCheckboxes()}
+      </div>
       <div className="bg-yellow-200 p-3 rounded shadow-md text-center">
         <ul>
           <li className="p-1">
@@ -139,10 +142,6 @@ const Home = (props: Props) => {
             <span className="font-extrabold">Kino</span> {currentCinema.name}
           </li>
         </ul>
-      </div>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
-        {renderCheckboxes()}
       </div>
 
       {renderCombos()}
