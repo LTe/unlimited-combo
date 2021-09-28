@@ -1,13 +1,15 @@
-import type { NextPage } from 'next';
-import { AppContext } from 'next/app';
-import { add, eachDayOfInterval, formatISO } from 'date-fns';
+import type {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+  NextPage,
+} from 'next';
 import Link from 'next/link';
-import { NextPageContext } from 'next/dist/shared/lib/utils';
 import { cinamas } from '@utils/cinema-city';
 
-const SelectCinema: NextPage<{ date: string }> = (props) => {
-  const { date } = props;
-
+const SelectCinema: NextPage = ({
+  date,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <h2 className="font-extrabold">Wybierz kino</h2>
@@ -27,10 +29,17 @@ const SelectCinema: NextPage<{ date: string }> = (props) => {
   );
 };
 
-export async function getServerSideProps(context: NextPageContext) {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    props: context.query,
+    paths: [],
+    fallback: 'blocking',
   };
-}
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  return {
+    props: context.params || {},
+  };
+};
 
 export default SelectCinema;

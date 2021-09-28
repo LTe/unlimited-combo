@@ -28,13 +28,7 @@
         "link": "https://www.cinema-city.pl/filmy/czarny-mlyn/4388o2r",
         "weight": 0,
         "releaseYear": "2021",
-        "attributeIds": [
-          "2d",
-          "adventure",
-          "family",
-          "na",
-          "original-lang-pl"
-        ]
+        "attributeIds": ["2d", "adventure", "family", "na", "original-lang-pl"]
       },
       {
         "id": "4702d2r",
@@ -100,13 +94,7 @@
         "link": "https://www.cinema-city.pl/filmy/najmro-kocha-kradnie-szanuje/4586o2r",
         "weight": -86,
         "releaseYear": "2021",
-        "attributeIds": [
-          "2d",
-          "action",
-          "comedy",
-          "na",
-          "original-lang-pl"
-        ]
+        "attributeIds": ["2d", "action", "comedy", "na", "original-lang-pl"]
       },
       {
         "id": "4440d2r",
@@ -193,12 +181,7 @@
         "link": "https://www.cinema-city.pl/filmy/tesciowie/4548o2r",
         "weight": 0,
         "releaseYear": "2021",
-        "attributeIds": [
-          "2d",
-          "comedy",
-          "na",
-          "original-lang-pl"
-        ]
+        "attributeIds": ["2d", "comedy", "na", "original-lang-pl"]
       },
       {
         "id": "4398s2r",
@@ -227,12 +210,7 @@
         "link": "https://www.cinema-city.pl/filmy/wyszynski-zemsta-czy-przebaczenie/4618o2r",
         "weight": 0,
         "releaseYear": "2021",
-        "attributeIds": [
-          "2d",
-          "drama",
-          "na",
-          "original-lang-pl"
-        ]
+        "attributeIds": ["2d", "drama", "na", "original-lang-pl"]
       },
       {
         "id": "4619o2r",
@@ -243,12 +221,7 @@
         "link": "https://www.cinema-city.pl/filmy/zeby-nie-bylo-sladow/4619o2r",
         "weight": -90,
         "releaseYear": "2021",
-        "attributeIds": [
-          "2d",
-          "drama",
-          "na",
-          "original-lang-pl"
-        ]
+        "attributeIds": ["2d", "drama", "na", "original-lang-pl"]
       }
     ],
     "events": [
@@ -258,13 +231,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T10:00:00",
-        "attributeIds": [
-          "2d",
-          "adventure",
-          "family",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "adventure", "family", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263440&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 4",
@@ -295,12 +262,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T10:10:00",
-        "attributeIds": [
-          "2d",
-          "drama",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "drama", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263460&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 5",
@@ -486,12 +448,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T13:20:00",
-        "attributeIds": [
-          "2d",
-          "drama",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "drama", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263447&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 5",
@@ -541,13 +498,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T13:50:00",
-        "attributeIds": [
-          "2d",
-          "action",
-          "comedy",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "action", "comedy", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263351&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 2",
@@ -599,12 +550,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T14:40:00",
-        "attributeIds": [
-          "2d",
-          "comedy",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "comedy", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263416&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 4",
@@ -673,13 +619,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T16:10:00",
-        "attributeIds": [
-          "2d",
-          "action",
-          "comedy",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "action", "comedy", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263352&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 2",
@@ -710,12 +650,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T16:30:00",
-        "attributeIds": [
-          "2d",
-          "drama",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "drama", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263448&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 5",
@@ -747,13 +682,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T17:00:00",
-        "attributeIds": [
-          "2d",
-          "adventure",
-          "family",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "adventure", "family", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263415&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 4",
@@ -822,13 +751,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T18:30:00",
-        "attributeIds": [
-          "2d",
-          "action",
-          "comedy",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "action", "comedy", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263353&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 2",
@@ -878,12 +801,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T19:10:00",
-        "attributeIds": [
-          "2d",
-          "drama",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "drama", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263417&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 4",
@@ -895,13 +813,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T19:50:00",
-        "attributeIds": [
-          "2d",
-          "action",
-          "comedy",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "action", "comedy", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263315&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 1",
@@ -913,12 +825,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T19:50:00",
-        "attributeIds": [
-          "2d",
-          "drama",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "drama", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263449&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 5",
@@ -930,12 +837,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T20:00:00",
-        "attributeIds": [
-          "2d",
-          "comedy",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "comedy", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263479&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 6",
@@ -947,13 +849,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T20:50:00",
-        "attributeIds": [
-          "2d",
-          "action",
-          "comedy",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "action", "comedy", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263354&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 2",
@@ -965,12 +861,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T21:10:00",
-        "attributeIds": [
-          "2d",
-          "drama",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "drama", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263418&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 4",
@@ -1040,12 +931,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T22:00:00",
-        "attributeIds": [
-          "2d",
-          "comedy",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "comedy", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263480&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 6",
@@ -1057,13 +943,7 @@
         "cinemaId": "1075",
         "businessDay": "2021-09-26",
         "eventDateTime": "2021-09-26T22:10:00",
-        "attributeIds": [
-          "2d",
-          "action",
-          "comedy",
-          "na",
-          "original-lang-pl"
-        ],
+        "attributeIds": ["2d", "action", "comedy", "na", "original-lang-pl"],
         "bookingLink": "https://www.cinema-city.pl/booking?presentationCode=263338&cinemaId=1075&lang=pl-PL",
         "soldOut": false,
         "auditorium": "Sala 1",

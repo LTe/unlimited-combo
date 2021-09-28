@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import {
   cinamas,
   CinemaCityResponse,
@@ -9,15 +9,15 @@ import {
 import { Combo } from '@components/Combo';
 import 'react-json-pretty/themes/monikai.css';
 import { ChangeEventHandler, useState } from 'react';
-import { NextPageContext } from 'next/dist/shared/lib/utils';
 import { parseISO } from 'date-fns';
 import { useRouter } from 'next/router';
 
 const MAXIMUM_BREAK = 60;
 
-const Home: NextPage<{ data: CinemaCityResponse; cinema: string }> = (
-  props
-) => {
+type Props = { data: CinemaCityResponse; cinema: string };
+type Params = { date: string; cinema: string };
+
+const Home = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   const moviesFromParams =
     router.query.movies && JSON.parse(router.query.movies as string);
@@ -150,8 +150,17 @@ const Home: NextPage<{ data: CinemaCityResponse; cinema: string }> = (
   );
 };
 
-export async function getServerSideProps(context: NextPageContext) {
-  const { date, cinema } = context.query as { date: string; cinema: string };
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+};
+
+export const getStaticProps: GetStaticProps<Props, Params> = async (
+  context
+) => {
+  const { date, cinema } = context.params!;
 
   const movies = await getMovies(cinema, parseISO(date));
   return {
@@ -160,6 +169,6 @@ export async function getServerSideProps(context: NextPageContext) {
       cinema: cinema,
     },
   };
-}
+};
 
 export default Home;

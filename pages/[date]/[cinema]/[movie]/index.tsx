@@ -1,21 +1,32 @@
-import { NextPageContext } from 'next/dist/shared/lib/utils';
 import { FilmPair, generateCombos, getMovies } from '@utils/cinema-city';
 import { parseISO } from 'date-fns';
-import { NextPage } from 'next';
+import {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetServerSidePropsType,
+} from 'next';
 import { Combo } from '@components/Combo';
 
-const Movie: NextPage<FilmPair> = (props) => (
+type Props = FilmPair;
+type Params = { date: string; cinema: string; movie: string };
+
+const Movie = (props: InferGetServerSidePropsType<typeof getStaticProps>) => (
   <div>
     <Combo {...props} />
   </div>
 );
 
-export async function getServerSideProps(context: NextPageContext) {
-  const { date, cinema, movie } = context.query as {
-    date: string;
-    cinema: string;
-    movie: string;
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
   };
+};
+
+export const getStaticProps: GetStaticProps<Props, Params> = async (
+  context
+) => {
+  const { date, cinema, movie } = context.params!;
 
   const movies = await getMovies(cinema, parseISO(date));
   const extendedEvents = generateCombos(movies);
@@ -23,10 +34,10 @@ export async function getServerSideProps(context: NextPageContext) {
 
   return {
     props: {
-      firstMovie: extendedEvents.find((event) => event.id === firstMovieId),
-      secondMovie: extendedEvents.find((event) => event.id === secondMovieId),
+      firstMovie: extendedEvents.find((event) => event.id === firstMovieId)!,
+      secondMovie: extendedEvents.find((event) => event.id === secondMovieId)!,
     },
   };
-}
+};
 
 export default Movie;
