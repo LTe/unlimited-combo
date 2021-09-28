@@ -17,7 +17,7 @@ const SelectCinema: NextPage<{ date: string }> = (props) => {
             key={JSON.stringify(cinema)}
             className="bg-yellow-200 rounded p-2 shadow-md text-blue-400"
           >
-            <Link href={`/date/${date}/cinema/${cinema.id}/`}>
+            <Link href={`/${date}/${cinema.id}/`}>
               <a>{cinema.name}</a>
             </Link>
           </div>

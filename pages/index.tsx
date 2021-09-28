@@ -21,7 +21,7 @@ const SelectDate: NextPage<{}> = (props) => {
               key={JSON.stringify(date)}
               className="text-blue-400 rounded bg-yellow-200 p-2 m-2 shadow-md"
             >
-              <Link href={`date/${iso}`}>
+              <Link href={`/${iso}`}>
                 <a>{iso}</a>
               </Link>
             </div>

@@ -111,9 +111,8 @@ export const getMovies = async (
 
 export const generateCombos = (
   data: CinemaCityResponse,
-  maximumBreak: number = MAXIMUM_BREAK,
   commercial_break: number = COMMERCIAL_BREAK
-): FilmPair[] => {
+): ExtendedEvent[] => {
   const {
     body: { films, events },
   } = data;
@@ -135,6 +134,16 @@ export const generateCombos = (
       film,
     };
   });
+
+  return extendedEvents;
+};
+
+export const findCombos = (
+  data: CinemaCityResponse,
+  maximumBreak: number = MAXIMUM_BREAK,
+  commercial_break: number = COMMERCIAL_BREAK
+): FilmPair[] => {
+  const extendedEvents = generateCombos(data, commercial_break);
 
   return extendedEvents
     .map((event) => {

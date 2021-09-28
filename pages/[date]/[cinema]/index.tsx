@@ -3,7 +3,7 @@ import {
   cinamas,
   CinemaCityResponse,
   COMMERCIAL_BREAK,
-  generateCombos,
+  findCombos,
   getMovies,
 } from '@utils/cinema-city';
 import { Combo } from '@components/Combo';
@@ -37,7 +37,7 @@ const Home: NextPage<{ data: CinemaCityResponse; cinema: string }> = (
   );
 
   const { data, cinema } = props;
-  const combos = generateCombos(data, maximumBreak, commercialBreak);
+  const combos = findCombos(data, maximumBreak, commercialBreak);
   const movies = data.body.films;
   const currentCinema = cinamas.find((element) => element.id === cinema)!;
 
@@ -151,7 +151,7 @@ const Home: NextPage<{ data: CinemaCityResponse; cinema: string }> = (
 };
 
 export async function getServerSideProps(context: NextPageContext) {
-  const [date, _, cinema] = context.query.cinema as string[];
+  const { date, cinema } = context.query as { date: string; cinema: string };
 
   const movies = await getMovies(cinema, parseISO(date));
   return {

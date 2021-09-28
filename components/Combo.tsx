@@ -1,7 +1,8 @@
 import { ExtendedEvent } from '@utils/cinema-city';
 import { format, differenceInMinutes } from 'date-fns';
-import { Md5 } from 'ts-md5/dist/md5';
 import { LinkIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Movie = (props: { movie: ExtendedEvent }) => {
   const { movie } = props;
@@ -54,7 +55,9 @@ export const Combo = (props: {
     secondMovie.startAtWithCommercial,
     firstMovie.endAtWithCommercial
   );
-  const id = Md5.hashAsciiStr(JSON.stringify([firstMovie, secondMovie]));
+  const id = [firstMovie.id, secondMovie.id].join('-');
+  const router = useRouter();
+  const { date, cinema, movie } = router.query;
 
   return (
     <div
@@ -62,9 +65,11 @@ export const Combo = (props: {
       className="relative flex gap-5 items-center bg-gray-50 p-5 rounded shadow-xl flex-col md:flex-row w-auto justify-center"
     >
       <div className="top-5 right-5 absolute">
-        <a href={`#${id}`}>
-          <LinkIcon className="h-5 w-5 text-blue-500" />
-        </a>
+        <Link href={`/${date}/${cinema}/${id}`}>
+          <a>
+            <LinkIcon className="h-5 w-5 text-blue-500" />
+          </a>
+        </Link>
       </div>
       <Movie movie={firstMovie} />
       <div className="flex flex-col">
