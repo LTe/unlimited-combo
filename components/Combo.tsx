@@ -1,8 +1,10 @@
 import { ExtendedEvent } from '@utils/cinema-city';
 import { format, differenceInMinutes } from 'date-fns';
 import { LinkIcon } from '@heroicons/react/solid';
+import { ShareIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 const Movie = (props: { movie: ExtendedEvent }) => {
   const { movie } = props;
@@ -58,6 +60,23 @@ export const Combo = (props: {
   const id = [firstMovie.id, secondMovie.id].join('-');
   const router = useRouter();
   const { date, cinema, movie } = router.query;
+  const link = `/${date}/${cinema}/${id}`;
+
+  const [isShareAvailable, setIsShareAvailable] = useState<boolean>(false);
+
+  useEffect(() => {
+    // @ts-ignore
+    window.navigator.share && setIsShareAvailable(true);
+  });
+
+  const shareMovie = () => {
+    navigator
+      .share({
+        title: `${firstMovie.film.name} - ${secondMovie.film.name}`,
+        url: link,
+      })
+      .catch(() => {});
+  };
 
   return (
     <div
@@ -65,11 +84,17 @@ export const Combo = (props: {
       className="relative flex gap-5 items-center bg-gray-50 p-5 rounded shadow-xl flex-col md:flex-row w-auto justify-center"
     >
       <div className="top-5 right-5 absolute">
-        <Link href={`/${date}/${cinema}/${id}`}>
-          <a>
-            <LinkIcon className="h-5 w-5 text-blue-500" />
-          </a>
-        </Link>
+        {isShareAvailable ? (
+          <div>
+            <ShareIcon onClick={shareMovie} className="h-5 w-5 text-blue-500" />
+          </div>
+        ) : (
+          <Link href={link}>
+            <a>
+              <LinkIcon className="h-5 w-5 text-blue-500" />
+            </a>
+          </Link>
+        )}
       </div>
       <Movie movie={firstMovie} />
       <div className="flex flex-col">
