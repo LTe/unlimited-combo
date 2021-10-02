@@ -11,6 +11,7 @@ import 'react-json-pretty/themes/monikai.css';
 import { ChangeEventHandler, useState } from 'react';
 import { parseISO } from 'date-fns';
 import { useRouter } from 'next/router';
+import { ExternalLinkIcon, LinkIcon } from '@heroicons/react/solid';
 
 const MAXIMUM_BREAK = 60;
 
@@ -44,11 +45,19 @@ const Home = (props: Props) => {
   const renderCombos = () => {
     const combosToShow = combos
       .filter((combo) => combo.firstMovie.filmId != combo.secondMovie.filmId)
-      .filter(
-        (combo) =>
-          moviesToShow.includes(combo.firstMovie.filmId) &&
-          moviesToShow.includes(combo.secondMovie.filmId)
-      );
+      .filter((combo) => {
+        if (moviesToShow.length > 1) {
+          return (
+            moviesToShow.includes(combo.firstMovie.filmId) &&
+            moviesToShow.includes(combo.secondMovie.filmId)
+          );
+        } else {
+          return (
+            moviesToShow.includes(combo.firstMovie.filmId) ||
+            moviesToShow.includes(combo.secondMovie.filmId)
+          );
+        }
+      });
 
     if (combosToShow.length > 0) {
       return combosToShow.map((combo) => (
@@ -84,19 +93,21 @@ const Home = (props: Props) => {
           <div>
             <input
               type="checkbox"
+              id={movie.id}
               value={movie.id}
               onChange={handleChange}
               checked={moviesToShow.includes(movie.id)}
             />
           </div>
           <div className="flex flex-row">
-            <label className="m-1">
-              <div>
-                <a target="_blank" rel="noreferrer" href={movie.link}>
-                  {movie.name}
-                </a>
-              </div>
+            <label className="m-1" htmlFor={movie.id}>
+              <div>{movie.name}</div>
             </label>
+          </div>
+          <div>
+            <a target="_blank" rel="noreferrer" href={movie.link}>
+              <ExternalLinkIcon className="h-5 w-5 text-blue-500" />
+            </a>
           </div>
         </div>
       );
