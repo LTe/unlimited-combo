@@ -4,10 +4,9 @@ import { LinkIcon } from '@heroicons/react/solid';
 import { ShareIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FunctionComponent } from 'react';
 
-const Movie = (props: { movie: ExtendedEvent }) => {
-  const { movie } = props;
+const Movie: FunctionComponent<{ movie: ExtendedEvent }> = ({ movie }) => {
   return (
     <div className="flex items-center gap-2">
       <div className="flex flex-col gap-2">
@@ -67,7 +66,7 @@ export const Combo = (props: {
   useEffect(() => {
     // @ts-ignore
     window.navigator.share && setIsShareAvailable(true);
-  });
+  }, []);
 
   const shareMovie = () => {
     navigator

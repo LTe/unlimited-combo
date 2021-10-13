@@ -1,6 +1,11 @@
-import { GetServerSideProps, InferGetStaticPropsType } from 'next';
 import {
-  cinamas,
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  InferGetStaticPropsType,
+  NextPage,
+} from 'next';
+import {
+  cinemas,
   CinemaCityResponse,
   COMMERCIAL_BREAK,
   findCombos,
@@ -11,14 +16,14 @@ import 'react-json-pretty/themes/monikai.css';
 import { ChangeEventHandler, useState } from 'react';
 import { parseISO } from 'date-fns';
 import { useRouter } from 'next/router';
-import { ExternalLinkIcon, LinkIcon } from '@heroicons/react/solid';
+import { ExternalLinkIcon } from '@heroicons/react/solid';
 
 const MAXIMUM_BREAK = 60;
 
 type Props = { data: CinemaCityResponse; cinema: string };
 type Params = { date: string; cinema: string };
 
-const Home = (props: Props) => {
+const Home: NextPage<Props> = (props) => {
   const router = useRouter();
   const moviesFromParams =
     router.query.movies && JSON.parse(router.query.movies as string);
@@ -40,7 +45,7 @@ const Home = (props: Props) => {
   const { data, cinema } = props;
   const combos = findCombos(data, maximumBreak, commercialBreak);
   const movies = data.body.films;
-  const currentCinema = cinamas.find((element) => element.id === cinema)!;
+  const currentCinema = cinemas.find((element) => element.id === cinema)!;
 
   const renderCombos = () => {
     const combosToShow = combos

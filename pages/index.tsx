@@ -1,9 +1,8 @@
-import type { NextPage } from 'next';
-import { AppContext } from 'next/app';
+import type { GetServerSideProps, NextPage } from 'next';
 import { add, eachDayOfInterval, formatISO } from 'date-fns';
 import Link from 'next/link';
 
-const SelectDate: NextPage<{}> = (props) => {
+const SelectDate: NextPage = (props) => {
   const today = new Date();
   const range = eachDayOfInterval({
     start: new Date(),
@@ -32,10 +31,10 @@ const SelectDate: NextPage<{}> = (props) => {
   );
 };
 
-export async function getServerSideProps(context: AppContext) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {},
   };
-}
+};
 
 export default SelectDate;

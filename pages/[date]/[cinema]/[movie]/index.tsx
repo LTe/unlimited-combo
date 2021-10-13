@@ -4,13 +4,14 @@ import {
   GetStaticPaths,
   GetStaticProps,
   InferGetServerSidePropsType,
+  NextPage,
 } from 'next';
 import { Combo } from '@components/Combo';
 
 type Props = FilmPair;
 type Params = { date: string; cinema: string; movie: string };
 
-const Movie = (props: InferGetServerSidePropsType<typeof getStaticProps>) => (
+const Movie: NextPage<Props> = (props) => (
   <div>
     <Combo {...props} />
   </div>

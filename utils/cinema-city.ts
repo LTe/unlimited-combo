@@ -10,37 +10,12 @@ import {
 export const COMMERCIAL_BREAK = 30;
 export const MAXIMUM_BREAK = 60;
 
-export type CinemaCityFilm = {
-  id: string;
-  name: string;
-  length: number;
-  posterLink: string;
-  videoLink: string;
-  link: string;
-  weight: number;
-  releaseYear: string;
-  attributeIds: string[];
-};
+import Response from './response.json';
 
-export type CinemaCityEvent = {
-  id: string;
-  filmId: string;
-  cinemaId: string;
-  businessDay: string;
-  eventDateTime: string;
-  attributeIds: string[];
-  bookingLink: string;
-  soldOut: boolean;
-  auditorium: string;
-  auditoriumTinyName: string;
-};
+export type CinemaCityResponse = typeof Response;
 
-export type CinemaCityResponse = {
-  body: {
-    films: CinemaCityFilm[];
-    events: CinemaCityEvent[];
-  };
-};
+export type CinemaCityFilm = CinemaCityResponse['body']['films'][0];
+export type CinemaCityEvent = CinemaCityResponse['body']['events'][0];
 
 export type ExtendedEvent = CinemaCityEvent & {
   startAt: Date;
@@ -50,17 +25,12 @@ export type ExtendedEvent = CinemaCityEvent & {
   film: CinemaCityFilm;
 };
 
-export type ComboEvent = {
-  event: ExtendedEvent;
-  candidates: ExtendedEvent[];
-};
-
 export type FilmPair = {
   firstMovie: ExtendedEvent;
   secondMovie: ExtendedEvent;
 };
 
-export const cinamas = [
+export const cinemas = [
   { id: '1088', name: 'Bielsko-Biała' },
   { id: '1086', name: 'Bydgoszcz' },
   { id: '1092', name: 'Bytom' },
