@@ -9,8 +9,10 @@ import {
 
 export const COMMERCIAL_BREAK = 30;
 export const MAXIMUM_BREAK = 60;
+export const TIME_ZONE = 'Europe/Warsaw';
 
 import Response from './response.json';
+import { zonedTimeToUtc } from 'date-fns-tz';
 
 export type CinemaCityResponse = typeof Response;
 
@@ -88,7 +90,7 @@ export const generateCombos = (
   } = data;
 
   const extendedEvents: ExtendedEvent[] = events.map((event) => {
-    const startAt = parseISO(event.eventDateTime);
+    const startAt = zonedTimeToUtc(event.eventDateTime, TIME_ZONE);
     const film = films.find((film) => film.id === event.filmId)!;
     const movieLength = film.length;
     const endAt = add(startAt, { minutes: movieLength });
