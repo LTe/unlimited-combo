@@ -15,9 +15,7 @@ const Movie: FunctionComponent<{ movie: ExtendedEvent }> = ({ movie }) => {
         <div className="bg-green-300 p-3 rounded shadow-md text-center">
           {format(movie.startAt, 'HH:mm', { timeZone: TIME_ZONE })}
         </div>
-        <div className="text-center text-blue-600 dark:text-blue-900">
-          Real Start™
-        </div>
+        <div className="text-center text-blue-600">Real Start™</div>
         <div className="bg-green-300 p-3 rounded shadow-md text-center">
           {format(movie.startAtWithCommercial, 'HH:mm', {
             timeZone: TIME_ZONE,
@@ -89,7 +87,7 @@ export const Combo = (props: {
   return (
     <div
       id={id}
-      className="relative flex gap-5 items-center bg-gray-50 dark:bg-gray-400 text-black p-5 rounded shadow-xl flex-col md:flex-row w-auto justify-center"
+      className="relative flex gap-5 items-center bg-gray-100 text-black p-5 rounded shadow-xl flex-col md:flex-row w-auto justify-center"
     >
       <div className="top-5 right-5 absolute">
         {isShareAvailable ? (

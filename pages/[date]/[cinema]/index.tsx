@@ -69,7 +69,7 @@ const Home: NextPage<Props> = (props) => {
         <Combo key={JSON.stringify(combo)} {...combo} />
       ));
     } else {
-      return <div className={'dark:text-blue-50'}>Brak combo :(</div>;
+      return <div>Brak combo :(</div>;
     }
   };
 
@@ -106,12 +106,12 @@ const Home: NextPage<Props> = (props) => {
           </div>
           <div className="flex flex-row">
             <label className="m-1" htmlFor={movie.id}>
-              <div className={'dark:text-blue-50'}>{movie.name}</div>
+              <div>{movie.name}</div>
             </label>
           </div>
           <div>
             <a target="_blank" rel="noreferrer" href={movie.link}>
-              <ExternalLinkIcon className="h-5 w-5 text-blue-500 dark:text-blue-300" />
+              <ExternalLinkIcon className="h-5 w-5 text-blue-500" />
             </a>
           </div>
         </div>
@@ -120,13 +120,11 @@ const Home: NextPage<Props> = (props) => {
   };
   return (
     <>
-      <h2 className="font-extrabold dark:text-blue-50">
-        Wybierz przynajmniej 2 filmy
-      </h2>
+      <h2 className="font-extrabold">Wybierz przynajmniej 2 filmy</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
         {renderCheckboxes()}
       </div>
-      <div className="bg-yellow-200 dark:bg-yellow-600 dark:text-blue-50 p-3 rounded shadow-md text-center">
+      <div className="bg-yellow-200 p-3 rounded shadow-md text-center">
         <ul>
           <li className="p-1">
             <span className="font-extrabold">Maksymalny czas przerwy</span>{' '}

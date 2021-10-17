@@ -13,12 +13,12 @@ type Params = { date: string };
 const SelectCinema: NextPage<Props> = ({ date }) => {
   return (
     <>
-      <h2 className="font-extrabold dark:text-blue-50">Wybierz kino</h2>
+      <h2 className="font-extrabold">Wybierz kino</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
         {cinemas.map((cinema) => (
           <div
             key={JSON.stringify(cinema)}
-            className="bg-yellow-200 rounded p-2 shadow-md text-blue-400 dark:text-blue-50 dark:bg-yellow-600"
+            className="bg-yellow-200 rounded p-2 shadow-md text-blue-400"
           >
             <Link href={`/${date}/${cinema.id}/`}>
               <a>{cinema.name}</a>

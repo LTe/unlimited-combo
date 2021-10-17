@@ -11,14 +11,14 @@ const SelectDate: NextPage = (props) => {
 
   return (
     <>
-      <h2 className="font-extrabold dark:text-blue-50">Wybierz date</h2>
+      <h2 className="font-extrabold">Wybierz date</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
         {range.map((date) => {
           const iso = formatISO(date, { representation: 'date' });
           return (
             <div
               key={JSON.stringify(date)}
-              className="text-blue-400 dark:text-blue-50 rounded bg-yellow-200 dark:bg-yellow-600 p-2 m-2 shadow-md"
+              className="text-blue-400 rounded bg-yellow-200 p-2 m-2 shadow-md"
             >
               <Link href={`/${iso}`}>
                 <a>{iso}</a>
