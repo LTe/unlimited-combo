@@ -28,10 +28,24 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   const extendedEvents = generateCombos(movies);
   const [firstMovieId, secondMovieId] = movie.split('-');
 
+  const firstMovie = extendedEvents.find((event) => event.id === firstMovieId);
+  const secondMovie = extendedEvents.find(
+    (event) => event.id === secondMovieId
+  );
+
+  if (!firstMovie || !secondMovie) {
+    return {
+      redirect: {
+        destination: '/missing',
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: {
-      firstMovie: extendedEvents.find((event) => event.id === firstMovieId)!,
-      secondMovie: extendedEvents.find((event) => event.id === secondMovieId)!,
+      firstMovie,
+      secondMovie,
     },
   };
 };

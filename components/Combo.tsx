@@ -1,5 +1,6 @@
-import { ExtendedEvent } from '@utils/cinema-city';
-import { format, differenceInMinutes } from 'date-fns';
+import { ExtendedEvent, TIME_ZONE } from '@utils/cinema-city';
+import { differenceInMinutes } from 'date-fns';
+import { format } from 'date-fns-tz';
 import { LinkIcon } from '@heroicons/react/solid';
 import { ShareIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
@@ -12,11 +13,13 @@ const Movie: FunctionComponent<{ movie: ExtendedEvent }> = ({ movie }) => {
       <div className="flex flex-col gap-2">
         <div className="text-center">Start</div>
         <div className="bg-green-300 p-3 rounded shadow-md text-center">
-          {format(movie.startAt, 'HH:mm')}
+          {format(movie.startAt, 'HH:mm', { timeZone: TIME_ZONE })}
         </div>
         <div className="text-center text-blue-600">Real Start™</div>
         <div className="bg-green-300 p-3 rounded shadow-md text-center">
-          {format(movie.startAtWithCommercial, 'HH:mm')}
+          {format(movie.startAtWithCommercial, 'HH:mm', {
+            timeZone: TIME_ZONE,
+          })}
         </div>
       </div>
       <div className="flex flex-col justify-center">
@@ -40,7 +43,11 @@ const Movie: FunctionComponent<{ movie: ExtendedEvent }> = ({ movie }) => {
       <div className="flex flex-col">
         <div className="text-center">Koniec</div>
         <div className="bg-green-300 p-3 rounded shadow-md">
-          <div>{format(movie.endAtWithCommercial, 'HH:mm')}</div>
+          <div>
+            {format(movie.endAtWithCommercial, 'HH:mm', {
+              timeZone: TIME_ZONE,
+            })}
+          </div>
         </div>
       </div>
     </div>

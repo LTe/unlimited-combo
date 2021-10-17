@@ -1,11 +1,5 @@
 import fetch from 'node-fetch';
-import {
-  format,
-  parseISO,
-  add,
-  compareAsc,
-  differenceInMinutes,
-} from 'date-fns';
+import { format, add, compareAsc, differenceInMinutes } from 'date-fns';
 
 export const COMMERCIAL_BREAK = 30;
 export const MAXIMUM_BREAK = 60;
