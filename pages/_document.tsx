@@ -7,7 +7,9 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body className={`${mode} bg-yellow-100 text-gray-500`}>
+        <body
+          className={`${mode} bg-yellow-100 dark:bg-yellow-900 text-gray-500`}
+        >
           <Main />
           <NextScript />
         </body>

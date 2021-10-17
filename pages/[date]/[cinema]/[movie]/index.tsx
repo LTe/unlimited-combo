@@ -1,7 +1,9 @@
 import { FilmPair, generateCombos, getMovies } from '@utils/cinema-city';
 import { parseISO } from 'date-fns';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { Combo } from '@components/Combo';
+import dynamic from 'next/dynamic';
+
+const Combo = dynamic(() => import('@components/Combo'));
 
 type Props = FilmPair;
 type Params = { date: string; cinema: string; movie: string };
