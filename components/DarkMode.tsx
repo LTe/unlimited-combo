@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DarkModeToggle from 'react-dark-mode-toggle';
+// @ts-ignore
 import nightwind from 'nightwind/helper';
-
-type Theme = 'dark' | 'light';
 
 export const DarkMode = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => false);
