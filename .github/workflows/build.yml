@@ -40,5 +40,6 @@ jobs:
         uses: 'google-github-actions/deploy-cloudrun@v0'
         with:
           service: 'combo-generator'
+          region: 'europe-west3'
           image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ env.GITHUB_SHA }}
 
