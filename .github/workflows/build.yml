@@ -8,6 +8,10 @@ on:
 
 jobs:
   build-image:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     runs-on: ubuntu-latest
     env:
       HASH: $(git rev-parse --short "$GITHUB_SHA")
@@ -16,11 +20,14 @@ jobs:
       PROJECT_ID: combo-generator
     steps:
       - uses: actions/checkout@v2
-      - uses: google-github-actions/setup-gcloud@master
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
         with:
-          service_account_key: ${{ secrets.GCR_SERVICE_ACCOUNT_KEY }}
-          project_id: combo-generator
-          export_default_credentials: true
+          workload_identity_provider: 'projects/586673076523/locations/global/workloadIdentityPools/github-auth-pool/providers/github-oidc-provider'
+          service_account: 'github-actions@combo-generator.iam.gserviceaccount.com'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
       - name: Image
         run: |-
           docker build -t eu.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA .
