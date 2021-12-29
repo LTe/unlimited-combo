@@ -35,5 +35,10 @@ jobs:
           gcloud auth configure-docker -q
       - name: Build
         run: |-
-          docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA          
-      
+          docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
+      - id: 'deploy'
+        uses: 'google-github-actions/deploy-cloudrun@v0'
+        with:
+          service: 'combo-generator'
+          image: gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
+
