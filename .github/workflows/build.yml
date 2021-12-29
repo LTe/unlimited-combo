@@ -35,5 +35,5 @@ jobs:
           gcloud auth configure-docker -q
       - name: Build
         run: |-
-          docker push eu.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA          
+          docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA          
       
