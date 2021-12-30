@@ -1,0 +1,43 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-image:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    runs-on: ubuntu-latest
+    env:
+      HASH: ${GITHUB_SHA::8}
+      BRANCH: ${GITHUB_REF##*/}
+      SERVICE_NAME: combo-generator
+      PROJECT_ID: combo-generator
+    steps:
+      - uses: actions/checkout@v2
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          workload_identity_provider: 'projects/586673076523/locations/global/workloadIdentityPools/github-auth-pool/providers/github-oidc-provider'
+          service_account: 'github-actions@combo-generator.iam.gserviceaccount.com'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+      - name: Image
+        run: |-
+          docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }} .
+      - run: |
+          gcloud auth configure-docker -q
+      - name: Build
+        run: |-
+          docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }}
+      - id: 'deploy'
+        uses: 'google-github-actions/deploy-cloudrun@v0'
+        with:
+          service: 'combo-generator'
+          region: 'europe-west4'
+          image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
+
