@@ -15,6 +15,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Unlimited Combo</title>
         <meta name="description" content="Unlimited Combo Generator" />
+        <link rel="manifest" href="/manifest.json" />
+        <link
+          rel="apple-touch-icon"
+          sizes="512x512"
+          href="/apple-touch-icon.png"
+        />
         <link rel="icon" href="/favicon.ico" />
         <body className={'bg-yellow-100 dark:bg-yellow-900 text-gray-500'} />
         <script dangerouslySetInnerHTML={{ __html: nightwind.init() }} />
