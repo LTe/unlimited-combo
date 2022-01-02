@@ -5,8 +5,17 @@ import Link from 'next/link';
 import { DarkMode } from '@components/DarkMode';
 // @ts-ignore
 import nightwind from 'nightwind/helper';
+import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  }, []);
+
   return (
     <div className="container h-full w-full mx-auto p-10">
       <div className={'absolute top-1 left-1'}>
@@ -21,6 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           sizes="512x512"
           href="/apple-touch-icon.png"
         />
+        <meta name="theme-color" content="#f69435" />
         <link rel="icon" href="/favicon.ico" />
         <body className={'bg-yellow-100 dark:bg-yellow-900 text-gray-500'} />
         <script dangerouslySetInnerHTML={{ __html: nightwind.init() }} />
